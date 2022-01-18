@@ -59,6 +59,7 @@ class BlogList(APIView):
     def get(self,request, format=None):
         event=Blog.objects.all()
         serializer=BlogSerializer(event,many=True)
+        print("blog serializer data",serializer.data)
         return Response(serializer.data)
     def post(self, request, format=None):
         serializer=BlogSerializer(data=request.data)
@@ -77,9 +78,12 @@ class GameRecordList(APIView):
     """
     def get(self,request, format=None):
         games=GameRecord.objects.all()
-        print("gamessssssssssssssssssssss",games)
+        # print("gamessssssssssssssssssssss",games)
 
-        serializer=GameRecordSerializer(games)
+        serializer=GameRecordSerializer(games, many=True)
+        print("serializersssssssssssss",serializer)
+        print("dataaaaaaaaaaaaaaaaaaaaa",serializer.data)
+
         return Response(serializer.data)
     def post(self, request, format=None):
         serializer=GameRecordSerializer(data=request.data)

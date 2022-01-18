@@ -70,7 +70,8 @@ def multiple_of_ten(value):
         raise serializers.ValidationError('Not a multiple of ten')
 
 class GameRecordSerializer(serializers.Serializer):
-    score=IntegerField(validators=[multiple_of_ten])
+   
+    score=serializers.IntegerField(validators=[multiple_of_ten])
 
     def create(self, validated_data):
 
